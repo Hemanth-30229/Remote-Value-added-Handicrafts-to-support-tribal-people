@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Artisan Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+        .container {
+            display: flex;
+            flex-grow: 1;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 15px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .sidebar a {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #ddd;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .sidebar a:hover {
+            background-color: #bbb;
+        }
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #fff;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        function loadContent(page) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', page, true);
+            xhr.onload = function() {
+                if (this.status === 200) {
+                    document.getElementById('content').innerHTML = this.responseText;
+                } else {
+                    document.getElementById('content').innerHTML = 'Error loading content.';
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Artisan Dashboard</h1>
+        <nav>
+            <a href="login.html">Home</a>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <!-- Left Sidebar Menu -->
+        <div class="sidebar">
+            <h3>Actions</h3>
+            <a href="#" onclick="loadContent('createListing.jsp')">Create Product Listing</a>
+            <a href="#" onclick="loadContent('manageListings.jsp')">Manage Listings</a>
+            <a href="#" onclick="loadContent('viewOrders.jsp')">View Orders</a>
+            <a href="#" onclick="loadContent('communicate.jsp')">Communicate with Customers</a>
+        </div>
+        
+        <!-- Main Content Area -->
+        <main id="content">
+            <h2>Welcome to Artisan Dashboard</h2>
+            <p>Select an action from the menu to get started.</p>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Handicrafts Platform</p>
+    </footer>
+</body>
+</html>
